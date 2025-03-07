@@ -1,0 +1,35 @@
+<section>
+  <article>
+    <h3>Two-way data binding com atributo simples</h3>
+    <div>
+
+      <!-- value e input -->
+      <input type="text" [value]="nome" (input)="onInput($event)" />
+
+      <!--  model e change model -->
+      <input type="text" [ngModel]="nome" (ngModelChange)="nome = $event" />
+   
+      <!--  two way data binding sem sintaxe sugar -->
+      <input type="text" bindon-ngModel="nome" />
+
+      <!--  two way data binding com sintaxe sugar -->
+      <input type="text" [(ngModel)]="nome" />
+      <br>
+      Você digitou o nome:{{nome}}
+
+    </div>
+
+    <br>
+    <br>
+
+    <h3>Two-way data binding com objetos</h3>
+    <div>
+      <input type="text" [(ngModel)]="pessoa.nome">
+      <input type="text" [(ngModel)]="pessoa.idade">
+      <br>
+      Você digitou o nome:{{pessoa.nome}}
+      <br>
+      você tem {{pessoa.idade}} anos
+    </div>
+  </article>
+</section>

@@ -1,0 +1,15 @@
+<div *ngIf="cursos.length > 0 && mostrarCursos">
+  existem cursos
+</div>
+<div *ngIf="cursos.length === 0">
+  não existem cursos
+</div>
+
+<br>
+<input type="text" (keydown.enter)="addCurso($event)">
+<button (click)="addCurso($event)">Adicionar</button>
+
+<br>
+<button (click)="mostrarEsconderCursos()">
+  {{ mostrarCursos ? 'Esconder cursos' : 'Mostrar Cursos' }}
+</button>

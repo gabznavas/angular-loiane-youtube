@@ -1,0 +1,30 @@
+<article>
+  <h3>Event Binding</h3>
+  <div>
+    <button on-click="botaoClicar()" class="btn btn-primary">Me clique! (modo nativo)</button>
+  </div>
+  <div>
+    <button (click)="botaoClicar()" class="btn btn-primary">Me clique!</button>
+  </div>
+  <br><br>
+
+  <ul>
+    <li *ngFor="let valor of valores">{{valor}}</li>
+  </ul>
+
+  <input 
+  #campoInput
+  type="text" 
+  [value]="valorAtual" 
+  (keyup)="onKeyup($event)" (keyup.enter)="salvarValor(campoInput.value)"
+  (blur)="salvarValor(campoInput.value)">
+  {{ valorAtual }}
+
+  <br>
+  <span 
+    (mouseover)="onMouseOverOutToggle()"
+    (mouseout)="onMouseOverOutToggle()"
+    [class.highlight]="isMouseOverOut"
+  >Passe o mouse sobre mim {{ isMouseOverOut }}</span>
+  
+</article>

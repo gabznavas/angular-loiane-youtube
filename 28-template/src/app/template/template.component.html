@@ -1,0 +1,37 @@
+<h2>Removendo o * e usando template</h2>
+
+<div *ngIf="cursos.length > 0">
+  Lista de cursos aqui.
+</div>
+
+<ng-template [ngIf]="cursos.length > 0">
+  <!-- conteúdo -->
+</ng-template>
+
+<!-- sem template -->
+<ul>
+  <li *ngFor="let curso of cursos">
+    {{ curso }}
+  </li>
+</ul>
+
+<!-- que coisa horrível -->
+<ul>
+  <ng-template ngFor let-curso [ngForOf]="cursos">
+    <li>{{ curso }}</li>
+  </ng-template>
+</ul>
+
+<!-- sem template -->
+<ul>
+  <li *ngFor="let curso of cursos; let i=index">
+    curso: {{ curso }} index: {{ i }}
+  </li>
+</ul>
+
+<!-- que coisa horrível -->
+<ul>
+  <ng-template ngFor let-curso [ngForOf]="cursos" let-i="index">
+    <li>{{ curso }} {{ i }}</li>
+  </ng-template>
+</ul>
