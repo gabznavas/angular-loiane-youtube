@@ -1,0 +1,33 @@
+<h3>Styles com property binding (style binding)</h3>
+
+<!-- difícil a leitura e manutenção -->
+<button
+  [style.backgroundColor]="ativo ? 'blue' : 'gray'"
+  [style.color]="ativo ? 'white' : 'black'"
+  [style.fontWeight]="ativo ? 'bold' : 'normal'"
+  [style.fontSize.px]="tamanhoFonte ? tamanhoFonte : 15"
+  (click)="toggleAtivo()"
+>
+  Mudar atributo 'ativo'
+</button>
+
+<!-- mais fácil a leitura e manutenção -->
+<h3>Styles com diretiva ngStyle</h3>
+<button
+  [ngStyle]="{
+    backgroundColor: ativo ? 'blue' : 'gray',
+    color: ativo ? 'white' : 'black',
+    fontWeight: ativo ? 'white': 'normal',
+    'fontSize.px': tamanhoFonte ? tamanhoFonte : 15,
+  }"
+  (click)="toggleAtivo()"
+>
+  Mudar atributo 'ativo'
+</button>
+
+<br><br><br>
+
+<div>
+  <label>tamanho da fonte</label>
+  <input [(ngModel)]="tamanhoFonte">
+</div>
