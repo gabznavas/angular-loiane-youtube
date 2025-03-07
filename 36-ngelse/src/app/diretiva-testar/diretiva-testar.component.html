@@ -1,0 +1,12 @@
+
+<div *ngIf="mostrarCursos">
+  cursos a mostra
+</div>
+<div *ngElse="mostrarCursos">
+  não existem cursos
+</div>
+
+
+<button
+  (click)="mostrarEsconderCursos()"
+>Mostrar ou esconder cursos</button>
