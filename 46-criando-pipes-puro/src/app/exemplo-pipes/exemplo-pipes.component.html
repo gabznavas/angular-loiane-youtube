@@ -1,0 +1,31 @@
+<h5>Criando um Pipe Puro</h5>
+
+<input placeholder="filtro..." type="text" [(ngModel)]="filtro">
+
+<br><br>
+
+<input placeholder="novo curso..."  type="text" #novoValor>
+<button (click)="addCurso(novoValor)">Add Curso</button>
+
+<h5>Pipe Puro</h5>
+<ul>
+  <li *ngFor="let livro of livros | filtroArray:filtro">
+    {{ livro }}
+  </li>
+</ul>
+
+
+<h5>Pipe Impuro</h5>
+<ul>
+  <li *ngFor="let livro of livros | filtroArrayImpuro:filtro">
+    {{ livro }}
+  </li>
+</ul>
+
+
+<h5>Maneira correta de usar filtros nos projetos</h5>
+<ul>
+  <li *ngFor="let livro of obterCursos()">
+    {{ livro }}
+  </li>
+</ul>
