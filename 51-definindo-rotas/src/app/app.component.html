@@ -1,9 +1,12 @@
 <nav>
   <div class="nav-wrapper">
-    <a routerLink="" class="brand-logo right">Rotas Ng2</a>
+    <a (click)="active = 'home'" routerLink="" class="brand-logo right">Rotas Ng2</a>
     <ul id="nav-mobile" class="left hide-on-med-and-down">
-      <li><a routerLink="login">Login</a></li>
-      <li><a routerLink="cursos">Curso</a></li>
+      <!-- jeito manual de receber o active -->
+      <li [class.active]="active === 'login'" (click)="changeActive('login')"><a routerLink="login">Login</a></li>
+      
+      <!-- se foi clicado, o li recebe a classe active -->
+      <li routerLinkActive="active"><a routerLink="cursos">Curso</a></li>
     </ul>
   </div>
 </nav>
