@@ -8,6 +8,8 @@ import { AlunosModule } from './alunos/alunos.module';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './login/auth.service';
 import { FormsModule } from '@angular/forms';
+import { AuthGuard } from './guards/auth.guard';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +17,7 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     LoginComponent,
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   imports: [
     BrowserModule,
     AppRoutingModule,
