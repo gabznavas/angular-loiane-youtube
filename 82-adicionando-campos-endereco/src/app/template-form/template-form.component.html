@@ -1,0 +1,97 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-horizontal d-flex flex-column gap-3 mt-3">
+  <div class="form-group">
+    <label [class.control-label]="!nome.valid && nome.touched" for="nome">Nome *</label>
+    <input #nome="ngModel" [class.is-invalid]="!nome.valid && nome.touched" maxlength="100" minlength="3" required
+      [(ngModel)]="usuario.nome" type="text" class="form-control" id="nome" name="nome" placeholder="John Doe...">
+    <div *ngIf="!nome.valid && nome.touched" class="alert alert-danger">
+      <div>Nome é obrigatório. </div>
+      <div> Mínimo de 3 caracteres.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">E-mail *</label>
+    <input #email="ngModel" name="email" [class.is-invalid]="!email.valid && email.touched" maxlength="100" required
+      [(ngModel)]="usuario.email" type="email" class="form-control" id="email" placeholder="joe@email.com" email>
+    <div *ngIf="!email.valid && email.touched" class="alert alert-danger">E-mail é obrigatório</div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-md-3 d-flex flex-column gap-1">
+      <label for="complemento">CEP</label>
+      <input type="text" [(ngModel)]="usuario.cep" required #cep="ngModel" id="cep" name="cep" class="form-control">
+      <div *ngIf="!cep.valid && cep.touched" class="alert alert-danger">CEP é obrigatório</div>
+    </div>
+
+    <div class="col-md-3 d-flex flex-column gap-1">
+      <label for="complemento">Número</label>
+      <input type="text" [(ngModel)]="usuario.numero" required #numero="ngModel" id="numero" name="numero"
+        class="form-control">
+      <div *ngIf="!numero.valid && numero.touched" class="alert alert-danger">Número é obrigatório</div>
+    </div>
+
+    <div class="col-md-6 d-flex flex-column gap-1">
+      <label for="complemento">Complemento</label>
+      <input type="text" [(ngModel)]="usuario.complemento" [required]="false" #complemento="ngModel" id="complemento"
+        name="complemento" class="form-control">
+      <div *ngIf="usuario.complemento.length > 255 && complemento.touched" class="alert alert-danger">
+        Comprimento máximo do complemento é de 255 caracteres
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-md-12 d-flex flex-column gap-1">
+      <label for="rua">Rua</label>
+      <input type="text" [(ngModel)]="usuario.rua" required minlength="3" maxlength="255" #rua="ngModel" id="rua"
+        name="rua" class="form-control">
+      <div *ngIf="!rua.valid && rua.touched" class="alert alert-danger">
+        <div>Rua é obrigatório. </div>
+        <div>Mínimo de 3 caracteres.</div>
+        <div>Máximo de 255 caracteres.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-md-4 d-flex flex-column gap-1">
+      <label for="rua">Bairro</label>
+      <input type="text" readonly [(ngModel)]="usuario.bairro" required minlength="3" maxlength="255" #bairro="ngModel"
+        id="bairro" name="bairro" class="form-control">
+      <div *ngIf="!bairro.valid && bairro.touched" class="alert alert-danger">
+        <div>Bairro é obrigatório. </div>
+        <div>Mínimo de 3 caracteres.</div>
+        <div>Máximo de 255 caracteres.</div>
+      </div>
+    </div>
+
+    <div class="col-md-4 d-flex flex-column gap-1">
+      <label for="rua">Cidade</label>
+      <input type="text" readonly [(ngModel)]="usuario.cidade" required minlength="3" maxlength="255" #cidade="ngModel"
+        id="cidade" name="cidade" class="form-control">
+      <div *ngIf="!cidade.valid && cidade.touched" class="alert alert-danger">
+        <div>Cidade é obrigatório. </div>
+        <div>Mínimo de 3 caracteres.</div>
+        <div>Máximo de 255 caracteres.</div>
+      </div>
+    </div>
+
+    <div class="col-md-4 d-flex flex-column gap-1">
+      <label for="rua">Estado</label>
+      <input type="text" readonly [(ngModel)]="usuario.estado" required minlength="3" maxlength="255" #estado="ngModel"
+        id="estado" name="estado" class="form-control">
+      <div *ngIf="!estado.valid && estado.touched" class="alert alert-danger">
+        <div>Estado é obrigatório. </div>
+        <div>Mínimo de 3 caracteres.</div>
+        <div>Máximo de 255 caracteres.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Submit</button>
+  </div>
+
+  <app-form-debug [form]="f"></app-form-debug>
+
+</form>
