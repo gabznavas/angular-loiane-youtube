@@ -1,0 +1,25 @@
+<h5>Editar aluno</h5>
+
+<div class="col s12">
+  <div class="row">
+    <div class="input-field col s6">
+      <input placeholder="Placeholder" disabled [value]="aluno.id" id="id" type="text" class="validate">
+      <label for="id" class="active">#</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <input (input)="onInput()" id="name" type="text" [(ngModel)]="aluno.nome" class="validate">
+      <label for="name" class="active">Nome</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <input id="email" type="email" [(ngModel)]="aluno.email" class="validate">
+      <label for="email" class="active">E-mail</label>
+    </div>
+  </div>
+  <div class="row">
+    <button class="btn" (click)="finalizarEdicao()">Finalizar</button>
+  </div>
+</div>

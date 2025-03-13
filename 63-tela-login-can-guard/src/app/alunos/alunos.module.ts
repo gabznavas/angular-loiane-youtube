@@ -8,7 +8,6 @@ import { AlunosService } from './services/alunos.service';
 import { FormsModule } from '@angular/forms';
 
 
-
 @NgModule({
   declarations: [
     AlunosComponent,

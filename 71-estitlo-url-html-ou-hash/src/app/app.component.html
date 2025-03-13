@@ -1,0 +1,37 @@
+<nav *ngIf="mostrarMenu">
+  <div class="nav-wrapper">
+    <a routerLink="" class="brand-logo right">Rotas Ng2</a>
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li routerLinkActive="active" >
+        <a routerLink="">Home</a>
+      </li>
+      <li routerLinkActive="active" >
+        <a routerLink="alunos">Alunos</a>
+      </li>
+      <li routerLinkActive="active" >
+        <a routerLink="cursos" [queryParams]="cursosQuery">Cursos</a>
+      </li>
+      <li *ngIf="mostrarMenu" (click)="sair()">
+        <a routerLink="login">Sair</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<nav *ngIf="!mostrarMenu">
+  <div class="nav-wrapper">
+    <a routerLink="" class="brand-logo right">Rotas Ng2</a>
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li routerLinkActive="active" >
+        <a routerLink="">Home</a>
+      </li>
+      <li routerLinkActive="active" >
+        <a routerLink="login">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

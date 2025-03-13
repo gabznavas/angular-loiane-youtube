@@ -9,12 +9,14 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'cursos',
+    canLoad: [AuthGuard],
     canActivate: [AuthGuard],
     loadChildren: () => import('../app/cursos/cursos.module')
-      .then(m => m.CursosModule)
+      .then(m => m.CursosModule),
   },
   {
     path: 'alunos',
+    canLoad: [AuthGuard],
     canActivate: [AuthGuard],
     loadChildren: () => import('../app/alunos/alunos.module')
       .then(m => m.AlunosModule)
