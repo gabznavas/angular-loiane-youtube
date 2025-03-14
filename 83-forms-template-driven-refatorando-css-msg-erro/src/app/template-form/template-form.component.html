@@ -1,0 +1,99 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-horizontal d-flex flex-column gap-3 mt-3">
+  <div class="form-group d-flex flex-column gap-1">
+    <label [ngClass]="{
+      'control-label': !nome.valid && nome.touched
+    }" for="nome">
+      Nome *
+    </label>
+    <input #nome="ngModel" [ngClass]="aplicaCssErroInput(nome)" [(ngModel)]="usuario.nome" maxlength="100" minlength="3"
+      required type="text" class="form-control" id="nome" name="nome" placeholder="John Doe...">
+    <app-campo-control-erro [mostrarErro]="isInvalidAndToucheded(nome)"
+      [messageErros]="['Campo obrigatório.','Mínimo de 3 caracteres.']"></app-campo-control-erro>
+  </div>
+
+  <div class="form-group d-flex flex-column gap-1">
+    <label for="email">E-mail *</label>
+    <input [ngClass]="aplicaCssErroInput(email)" #email="ngModel" name="email" maxlength="100" required
+      [(ngModel)]="usuario.email" type="email" class="form-control" id="email" placeholder="joe@email.com" email>
+    <app-campo-control-erro [mostrarErro]="isInvalidAndToucheded(email)"
+      [messageErros]="['Campo obrigatório',]"></app-campo-control-erro>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-md-3 d-flex flex-column gap-1">
+      <label for="complemento">CEP</label>
+      <input [ngClass]="{
+        'is-invalid': !cep.valid && cep.touched 
+      }" type="text" [(ngModel)]="usuario.cep" required #cep="ngModel" id="cep" name="cep" class="form-control">
+      <app-campo-control-erro [mostrarErro]="isInvalidAndToucheded(cep)"
+        [messageErros]="['Campo obrigatório',]"></app-campo-control-erro>
+    </div>
+
+    <div class="col-md-3 d-flex flex-column gap-1">
+      <label for="complemento">Número</label>
+      <input [ngClass]="aplicaCssErroInput(numero)" type="number" [(ngModel)]="usuario.numero" required
+        #numero="ngModel" id="numero" name="numero" class="form-control">
+      <app-campo-control-erro [mostrarErro]="isInvalidAndToucheded(numero)"
+        [messageErros]="['Campo obrigatório',]"></app-campo-control-erro>
+    </div>
+
+    <div class="col-md-6 d-flex flex-column gap-1">
+      <label for="complemento">Complemento</label>
+      <input [ngClass]="{
+        'is-invalid': !complemento.valid && complemento.touched 
+      }" type="text" [(ngModel)]="usuario.complemento" [required]="false" #complemento="ngModel" id="complemento"
+        name="complemento" class="form-control">
+      <app-campo-control-erro [mostrarErro]="usuario.complemento.length > 255 && complemento.touched!"
+        [messageErros]="['Comprimento máximo do complemento é de 255 caracteres']"></app-campo-control-erro>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-md-12 d-flex flex-column gap-1">
+      <label for="rua">Rua</label>
+      <input [ngClass]="aplicaCssErroInput(rua)" type="text" [(ngModel)]="usuario.rua" required minlength="3"
+        maxlength="255" #rua="ngModel" id="rua" name="rua" class="form-control">
+      <app-campo-control-erro [mostrarErro]="isInvalidAndToucheded(rua)" [messageErros]="['Campo obrigatório. ',
+          'Mínimo de 3 caracteres.',
+          'Máximo de 255 caracteres.',]"></app-campo-control-erro>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-md-4 d-flex flex-column gap-1">
+      <label for="rua">Bairro</label>
+      <input [ngClass]="aplicaCssErroInput(bairro)" type="text" [(ngModel)]="usuario.bairro" required minlength="3"
+        maxlength="255" #bairro="ngModel" id="bairro" name="bairro" class="form-control">
+      <app-campo-control-erro [mostrarErro]="isInvalidAndToucheded(bairro)" [messageErros]="[
+        'Campo obrigatório. ',
+      'Mínimo de 3 caracteres.',
+      'Máximo de 255 caracteres.',]"></app-campo-control-erro>
+    </div>
+
+    <div class="col-md-4 d-flex flex-column gap-1">
+      <label for="rua">Cidade</label>
+      <input [ngClass]="aplicaCssErroInput(cidade)" type="text" [(ngModel)]="usuario.cidade" required minlength="3"
+        maxlength="255" #cidade="ngModel" id="cidade" name="cidade" class="form-control">
+      <app-campo-control-erro [mostrarErro]="isInvalidAndToucheded(cidade)" [messageErros]="[
+         'Campo obrigatório. ',
+        'Mínimo de 3 caracteres.',
+        'Máximo de 255 caracteres.',]"></app-campo-control-erro>
+    </div>
+
+    <div class="col-md-4 d-flex flex-column gap-1">
+      <label for="rua">Estado</label>
+      <input [ngClass]="aplicaCssErroInput(estado)" type="text" [(ngModel)]="usuario.estado" required minlength="3"
+        maxlength="255" #estado="ngModel" id="estado" name="estado" class="form-control">
+      <app-campo-control-erro [mostrarErro]="isInvalidAndToucheded(estado)" [messageErros]="[
+        'Campo obrigatório. ',
+        'Mínimo de 3 caracteres.',
+        'Máximo de 255 caracteres.',]"></app-campo-control-erro>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Submit</button>
+  </div>
+
+  <app-form-debug [form]="f"></app-form-debug>
+</form>
